@@ -9,6 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
     <style>
         :root {
             --primary-bg: #0d1117;
@@ -90,6 +94,16 @@
         
         .hover-scale:hover {
             transform: translateY(-5px);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(88, 166, 255, 0.2);
+            border-color: var(--accent-primary);
         }
         
         .fade-in {
@@ -271,6 +285,23 @@
         </div>
     </section>
 
+    <!-- CTA Banner -->
+    <section class="container mx-auto px-6 py-8">
+        <div class="content-bg rounded-xl p-6 border border-gray-800 text-center">
+            <p class="text-lg text-gray-300">
+                👉 <span class="text-accent font-semibold">Available for SQL Optimization & Data Analysis Contracts</span> — Let's reduce your query times by 40% too.
+            </p>
+            <div class="mt-4">
+                <a href="#contact" class="px-6 py-3 bg-accent text-primary-bg rounded-md font-medium hover:bg-opacity-90 transition-colors inline-block">
+                    Get in Touch
+                </a>
+                <a href="https://calendly.com/adnanqamar/30min" target="_blank" class="ml-4 px-6 py-3 border border-accent text-accent rounded-md font-medium hover:bg-accent hover:bg-opacity-10 transition-colors inline-block">
+                    Book a 15-min Intro Call
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="container mx-auto px-6 py-20">
         <div class="text-center mb-16 fade-in">
@@ -280,7 +311,7 @@
         
         <div class="grid md:grid-cols-2 gap-10">
             <!-- Project 1 -->
-            <div class="content-bg rounded-xl p-8 hover-scale transition-all duration-300 border border-gray-800 fade-in opulent-glass">
+            <div class="content-bg rounded-xl p-8 project-card transition-all duration-300 border border-gray-800 fade-in opulent-glass">
                 <div class="flex items-center mb-6">
                     <div class="w-12 h-12 rounded-full bg-accent bg-opacity-10 flex items-center justify-center mr-4">
                         <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -332,7 +363,7 @@
             </div>
             
             <!-- Project 2 -->
-            <div class="content-bg rounded-xl p-8 hover-scale transition-all duration-300 border border-gray-800 fade-in opulent-glass">
+            <div class="content-bg rounded-xl p-8 project-card transition-all duration-300 border border-gray-800 fade-in opulent-glass">
                 <div class="flex items-center mb-6">
                     <div class="w-12 h-12 rounded-full bg-accent bg-opacity-10 flex items-center justify-center mr-4">
                         <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -365,7 +396,7 @@
             </div>
             
             <!-- Project 3 -->
-            <div class="content-bg rounded-xl p-8 hover-scale transition-all duration-300 border border-gray-800 fade-in opulent-glass">
+            <div class="content-bg rounded-xl p-8 project-card transition-all duration-300 border border-gray-800 fade-in opulent-glass">
                 <div class="flex items-center mb-6">
                     <div class="w-12 h-12 rounded-full bg-accent bg-opacity-10 flex items-center justify-center mr-4">
                         <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -399,7 +430,7 @@
             </div>
             
             <!-- Project 4 -->
-            <div class="content-bg rounded-xl p-8 hover-scale transition-all duration-300 border border-gray-800 fade-in opulent-glass">
+            <div class="content-bg rounded-xl p-8 project-card transition-all duration-300 border border-gray-800 fade-in opulent-glass">
                 <div class="flex items-center mb-6">
                     <div class="w-12 h-12 rounded-full bg-accent bg-opacity-10 flex items-center justify-center mr-4">
                         <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -882,7 +913,7 @@
             labels: ['SQL', 'Python', 'C++', 'Database Design', 'Query Optimization', 'Data Analysis'],
             datasets: [{
                 label: 'Skill Level',
-                data: [ 60, 90 , 75, 85, 85, 70],
+                data: [ 0, 0, 0, 0, 0, 0], // Start with 0 values for animation
                 backgroundColor: 'rgba(0, 212, 255, 0.2)',
                 borderColor: 'rgba(0, 212, 255, 1)',
                 borderWidth: 2,
@@ -890,6 +921,10 @@
             }]
         },
         options: {
+            animation: {
+                duration: 2000,
+                easing: 'easeOutQuart'
+            },
             scales: {
                 r: {
                     angleLines: {
@@ -904,8 +939,12 @@
                     ticks: {
                         backdropColor: 'transparent',
                         color: 'rgba(255, 255, 255, 0.5)',
-                        stepSize: 20
-                    }
+                        stepSize: 20,
+                        max: 100,
+                        min: 0
+                    },
+                    max: 100,
+                    min: 0
                 }
             },
             plugins: {
@@ -915,13 +954,37 @@
             }
         }
     });
+
+    // Animate chart when it comes into view
+    const animateChart = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Update chart data to actual values
+                skillsChart.data.datasets[0].data = [60, 90, 75, 85, 85, 70];
+                skillsChart.update();
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    // Create observer to trigger chart animation
+    const chartObserver = new IntersectionObserver(animateChart, { threshold: 0.5 });
+    if (skillsCtx) {
+        chartObserver.observe(skillsCtx);
+    }
  
         
         // Mobile menu toggle
-      
         document.getElementById('menuToggle').addEventListener('click', function() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
         });
 
         // Progress bar
@@ -1009,20 +1072,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-        // Animated code block
+        // Animated code block with syntax highlighting
         const codeElement = document.getElementById('animated-code');
-        // In your <script> tag, replace the old 'const code' with this:
+        const code = `SELECT sanity FROM my_brain
+WHERE sanity IS NOT NULL;
 
-        // In your <script> tag, replace the old 'const code' with this:
-
-            const code = `SELECT sanity FROM my_brain\nWHERE sanity IS NOT NULL;\n\n-- 0 rows returned.\n-- Well, that explains a lot.`;
+-- 0 rows returned.
+-- Well, that explains a lot.`;
 
         let index = 0;
         function typeCode() {
             if (index < code.length) {
                 codeElement.textContent += code.charAt(index);
                 index++;
+                // Apply syntax highlighting periodically during typing
+                if (index % 5 === 0 || index === code.length) {
+                    Prism.highlightElement(codeElement);
+                }
                 setTimeout(typeCode, 25);
+            } else {
+                // Final syntax highlighting when typing is complete
+                Prism.highlightElement(codeElement);
             }
         }
 
@@ -1063,13 +1133,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Ensure header is visible when clicking on navigation links
+            // Smooth scroll with offset for fixed header
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', () => {
-                    header.classList.remove('hidden');
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Adjust for header height
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                        // Ensure header is visible
+                        header.classList.remove('hidden');
+                    }
                 });
             });
         });
+        // Back to top button
+        const backToTopButton = document.createElement('button');
+        backToTopButton.id = 'backToTop';
+        backToTopButton.innerHTML = '↑';
+        backToTopButton.className = 'fixed bottom-6 right-6 p-3 rounded-full bg-accent text-white opacity-0 invisible transition-all duration-300 z-50';
+        document.body.appendChild(backToTopButton);
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Easter egg console message
+        console.log("%cHi there! 👋 I'm Adnan — SQL optimizer, data tamer, and part-time sanity debugger.", "color: #58a6ff; font-size: 16px");
     </script>
 </body>
 </html>
