@@ -31,6 +31,10 @@
             --glass-border-radius: 20px;
         }
 
+        html, body {
+            height: 100%;
+        }
+        
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background-color: #111;
@@ -42,6 +46,7 @@
             line-height: 1.7;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            overflow-y: auto;
         }
 
         /* Chameleon/Goldfish Theme Gradient Backgrounds */
@@ -53,7 +58,7 @@
 
         .gradient-bg::before, .gradient-bg::after {
             content: '';
-            position: fixed;
+            position: absolute;
             width: 600px;
             height: 600px;
             border-radius: 50%;
@@ -77,7 +82,7 @@
 
         /* Additional gradient element for tertiary color */
         .gradient-bg .tertiary-glow {
-            position: fixed;
+            position: absolute;
             width: 500px;
             height: 500px;
             border-radius: 50%;
@@ -222,7 +227,7 @@
             width: 100%;
             height: 4px;
             background: rgba(255,255,255,0.1);
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             z-index: 100;
@@ -1126,31 +1131,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // Animated code block
-        const codeElement = document.getElementById('animated-code');
-        // In your <script> tag, replace the old 'const code' with this:
-
-        // In your <script> tag, replace the old 'const code' with this:
-
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeElement = document.getElementById('animated-code');
             const code = `SELECT sanity FROM my_brain
 WHERE sanity IS NOT NULL;
 
 -- 0 rows returned.
 -- Well, that explains a lot.`;
-
-        let index = 0;
-        function typeCode() {
-            if (index < code.length) {
-                codeElement.textContent += code.charAt(index);
-                index++;
-                setTimeout(typeCode, 25);
-            }
-        }
-
-        // Start animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(typeCode, 500); // Start after a short delay for a smoother effect
+            let index = 0;
             
-            // Header scroll behavior
+            function typeCode() {
+                if (index < code.length) {
+                    codeElement.textContent += code.charAt(index);
+                    index++;
+                    setTimeout(typeCode, 25);
+                }
+            }
+            
+            setTimeout(typeCode, 500); // Start after a short delay for a smoother effect
+        });
+        
+        // Header scroll behavior
+        document.addEventListener('DOMContentLoaded', function() {
             const header = document.getElementById('mainHeader');
             const heroSection = document.querySelector('.glass-card');
             let lastScroll = window.scrollY;
