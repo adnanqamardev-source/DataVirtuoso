@@ -1,280 +1,110 @@
-# MD Adnan Qamar | Portfolio Website
+# 🚀 Adnan Qamar — AI Engineer Portfolio
 
-## README.md
+A single-file, dependency-free portfolio website for **MD Adnan Qamar** — AI Engineer / Generative AI Engineer / Agentic AI Engineer.
 
-```markdown
-# MD Adnan Qamar — Data Analyst & SQL Developer Portfolio
-
-A modern, responsive personal portfolio website built with 
-vanilla HTML, CSS, and JavaScript. Features a dark glassmorphism 
-design with animated gradients, interactive charts, and smooth 
-scroll animations.
-
----
-
-## 🌐 Live Demo
-> Deploy on GitHub Pages, Netlify, or Vercel for free hosting.
+Built as one self-contained `index.html` (embedded CSS + vanilla JS). No frameworks, no build step, no external libraries — it works offline and can be deployed anywhere.
 
 ---
 
 ## ✨ Features
 
-- **Glassmorphism UI** — Frosted glass cards with gradient borders
-- **Animated Hero** — Typewriter SQL code animation
-- **Skills Radar Chart** — Interactive Chart.js visualization
-- **Scroll Animations** — IntersectionObserver fade-in effects
-- **Progress Bar** — Reading progress indicator
-- **Contact Form** — Formspree-powered (no backend required)
-- **Responsive Design** — Mobile-first with hamburger menu
-- **Smart Header** — Auto-hides on scroll down, reappears on scroll up
-- **Ambient Gradients** — Animated color glows (orange, cyan, green)
+- **Dark, glassmorphic AI-engineer aesthetic** — animated gradient blobs, subtle grid overlay, terminal-style hero widget
+- **Typed hero** cycling through roles (AI Engineer → Generative AI → Agentic AI)
+- **Animated stat counters** — 300K+ records processed, 95% JSON success, 15 API endpoints, 16 repos
+- **8 numbered sections** with smooth-scroll navigation, active-link highlighting, and scroll-reveal animations
+- **Working contact form** — validates input and opens the visitor's email app pre-filled (no backend required)
+- **Download Resume** buttons linked to the hosted PDF (hero + contact card)
+- **Scroll progress bar** + back-to-top button
+- **Fully responsive** — hamburger menu on mobile
+- **`prefers-reduced-motion` support** for accessibility
+- Zero external requests — fonts, icons, and styles are all inline
 
----
+## 🗂 Section Structure
 
-## 🛠️ Tech Stack
+| # | Section | Contents |
+|---|---------|----------|
+| 01 | About | Professional summary + highlight cards |
+| 02 | Experience | IBM SkillsBuild & CodSoft internships (timeline) |
+| 03 | Education | B.Tech CSE @ RTU, CGPA 7.64, Class of 2026 |
+| 04 | Skills | Languages, AI/LLMs, Backend, Frontend, Databases, Tools |
+| 05 | Projects | ArziWala, UsTogether, AURA & CO + outcome metrics |
+| 06 | Achievements | GitHub badges: Pull Shark, Quickdraw, YOLO |
+| 07 | GitHub | Live links to all public repositories |
+| 08 | Contact | Contact links + message form |
 
-| Technology     | Purpose                          |
-|----------------|----------------------------------|
-| HTML5          | Structure & semantics            |
-| CSS3           | Glassmorphism, animations        |
-| Tailwind CSS   | Utility-first responsive layout  |
-| JavaScript ES6 | Interactivity & DOM manipulation |
-| Chart.js       | Skills radar visualization       |
-| Formspree      | Contact form backend             |
-| Google Fonts   | Inter typeface                   |
+## 🛠 Tech Stack
 
----
+- **Markup/Styles:** HTML5, CSS3 (custom properties, CSS grid, flexbox)
+- **Scripting:** Vanilla JavaScript (IntersectionObserver, typed effect, count-up)
+- **No build tools, no CDNs, no dependencies**
 
-## 📁 Project Structure
+## 🔧 Customization
+
+All content lives in `index.html` — no config file needed.
+
+**Contact details** — search and replace:
+
+| Search | Replace with |
+|--------|-------------|
+| `adnanqamar.dev@gmail.com` | your email |
+| `+91 77638 67498` | your phone |
+| `adnanqamardev-source` | your GitHub username |
+
+**Resume link** — the Download Resume buttons point to:
+
+```
+https://raw.githubusercontent.com/adnanqamardev-source/Portfolio/main/Md.Adnan_QAMAR_Resume.pdf
+```
+
+If your resume lives elsewhere (Drive, repo, S3), update the `href` in these places:
+1. Hero actions (`#home` section)
+2. Contact card (`#contact` section)
+
+**Projects** — edit the cards inside the `#projects` section (icon, title, description, metric chips, tags, live/GitHub links). Add or remove repository cards in the `#repos` section.
+
+**Colors** — the palette is defined once in the `:root` block:
+
+```css
+--violet: #8b5cf6;
+--cyan:   #22d3ee;
+--grad:   linear-gradient(90deg, #8b5cf6, #22d3ee);
+```
+
+**Spacing** — a consistent 8px rhythm is used everywhere via `--s1` … `--s7` tokens (`8px → 96px`).
+
+## 🚀 Deployment
+
+The file is fully static — pick any host:
+
+**GitHub Pages**
+1. Push `index.html` (and `README.md`) to your repo
+2. Go to **Settings → Pages**
+3. Deploy from branch `main` / root folder
+4. Live at `https://<username>.github.io/<repo>`
+
+**Vercel**
+1. `vercel` in the project folder, or import the repo at vercel.com
+2. Framework preset: *Other* — zero config needed
+
+**Netlify / Cloudflare Pages**
+Drag-and-drop `index.html`, or connect the repo. Done.
+
+> 💡 Note: the resume download button relies on the browser's native download behavior — works on any real deployed host (the embedded sandbox preview may block it).
+
+## 🗃 Project Structure
 
 ```
 portfolio/
-│
-├── index.html                    # Main portfolio file (single-page)
-├── Md.Adnan_QAMAR_Resume.pdf     # Downloadable resume
-└── README.md                     # This file
+├── index.html   # the entire site (styles + markup + JS)
+└── README.md
 ```
+
+## 📝 License
+
+Portfolio content © 2026 MD Adnan Qamar. The code is free to reuse for your own portfolio — just swap in your own details and resume.
 
 ---
 
-## 🚀 Getting Started
-
-### Option 1: Open Locally
-```bash
-# Clone or download the repository
-git clone https://github.com/yourusername/portfolio.git
-
-# Open directly in browser — no build step needed!
-open index.html
-```
-
-### Option 2: Deploy to GitHub Pages
-```bash
-# 1. Create a new GitHub repository
-# 2. Push your files
-git init
-git add .
-git commit -m "Initial portfolio deploy"
-git remote add origin https://github.com/yourusername/portfolio.git
-git push -u origin main
-
-# 3. Go to Settings → Pages → Deploy from main branch
-```
-
-### Option 3: Deploy to Netlify
-```bash
-# Drag and drop your project folder at netlify.com/drop
-# Live in 30 seconds — no configuration needed
-```
-
----
-
-## ⚙️ Configuration & Customization
-
-### 1. Update Personal Information
-Edit `index.html` and replace:
-```html
-<!-- Name -->
-<a href="#">MD Adnan Qamar</a>
-
-<!-- Email -->
-adnanqamar.dev@gmail.com
-
-<!-- LinkedIn -->
-https://linkedin.com/in/MdAdnanQamar
-
-<!-- Telegram -->
-Md_Adnan_Qamar
-```
-
-### 2. Update Formspree Endpoint
-```html
-<!-- Replace with your own Formspree form ID -->
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-```
-> Sign up free at [formspree.io](https://formspree.io)
-
-### 3. Change Theme Colors
-Edit CSS variables in `:root`:
-```css
-:root {
-    --accent-primary: #F2AD62;   /* Orange — goldfish */
-    --accent-secondary: #00BCD4; /* Cyan — chameleon  */
-    --accent-tertiary: #8BC34A;  /* Green — growth    */
-}
-```
-
-### 4. Update Skills Radar Chart
-```javascript
-data: {
-    labels: ['SQL', 'Python', 'C++', 
-             'Database Design', 
-             'Query Optimization', 
-             'Data Analysis'],
-    datasets: [{
-        data: [60, 90, 75, 85, 85, 70], // Adjust values (0-100)
-    }]
-}
-```
-
-### 5. Replace Resume File
-```
-Drop your PDF as: Md.Adnan_QAMAR_Resume.pdf
-(or update the filename in the download link)
-```
-
----
-
-## 📱 Browser Support
-
-| Browser | Support |
-|---------|---------|
-| Chrome  | ✅ Full  |
-| Firefox | ✅ Full  |
-| Safari  | ✅ Full  |
-| Edge    | ✅ Full  |
-| IE 11   | ❌ None  |
-
-> **Note:** Backdrop-filter (glassmorphism) requires 
-> a modern browser. Graceful degradation included.
-
----
-
-## 🎨 Design System
-
-### Color Palette — Chameleon & Goldfish Theme
-
-```
-#F2AD62  →  Goldfish Orange  (primary actions, highlights)
-#00BCD4  →  Chameleon Cyan   (experience, secondary info)
-#8BC34A  →  Growth Green     (skills, achievements)
-#0d1117  →  Deep Dark        (background base)
-```
-
-### Typography
-```
-Font: Inter (Google Fonts)
-Weights: 300 (light), 400 (regular), 500 (medium), 600 (semibold)
-```
-
-### Spacing System
-```
-Follows Tailwind CSS default spacing scale (4px base unit)
-Section padding: py-20 (80px vertical)
-Container: max-w-6xl with px-6 horizontal padding
-```
-
----
-
-## 🔧 Known Limitations & Improvements
-
-### Current Limitations
-- Single HTML file (no component separation)
-- Tailwind loaded via CDN (not optimized for production)
-- No dark/light mode toggle
-- Chart.js loaded twice (duplicate script tag)
-
-### Suggested Improvements
-```
-□ Remove duplicate Chart.js CDN script tag
-□ Add GitHub profile/repo links to projects
-□ Implement dark/light theme toggle
-□ Add loading skeleton screens
-□ Migrate to Vite + Tailwind CLI for production build
-□ Add meta Open Graph tags for social sharing
-□ Compress and optimize background gradients for mobile
-□ Add ARIA labels for better accessibility
-```
-
----
-
-## 📊 Performance Notes
-
-- **No build process** — pure HTML/CSS/JS
-- **CDN dependencies** — Chart.js, Tailwind, Google Fonts
-- **Lazy animations** — IntersectionObserver (no scroll jank)
-- **Throttled scroll** — requestAnimationFrame for header behavior
-
----
-
-## 📄 License
-MIT License — Free to use and modify for personal portfolios.
-
----
-
-## 🤝 Contact
-**MD Adnan Qamar**  
-📧 adnanqamar.dev@gmail.com  
-💼 [LinkedIn](https://linkedin.com/in/MdAdnanQamar)  
-💬 Telegram: @Md_Adnan_Qamar
-```
-
----
-
-## 📝 Site Description
-
-### Short Description (for GitHub repo)
-```
-Personal portfolio of MD Adnan Qamar — Data Analyst & SQL Developer. 
-Built with HTML, Tailwind CSS, and Chart.js. Features glassmorphism 
-design, animated gradients, skills radar chart, and Formspree contact form.
-```
-
-### Meta Description (already in HTML)
-```
-Data analyst with proven SQL optimization skills. 
-View projects showing 40% efficiency improvements.
-```
-
-### LinkedIn/Bio Description
-```
-🔗 Portfolio Website — mdadnanqamar.dev
-
-Dark-themed personal portfolio showcasing data analysis projects, 
-SQL optimization work, and technical skills. Built from scratch 
-with glassmorphism UI, animated code blocks, and an interactive 
-skills radar chart.
-
-Key highlights:
-• Library Management System (40% query efficiency gain)
-• COVID-19 Spread Analysis with Tableau dashboards  
-• Student Database Query Engine with PostgreSQL
-• Vaccination Impact predictive modeling
-
-Tech: HTML · CSS · JavaScript · Chart.js · Tailwind CSS
-```
-
-### Open Graph / Social Share Tags (add to `<head>`)
-```html
-<meta property="og:title" 
-      content="MD Adnan Qamar | Data Analyst Portfolio" />
-<meta property="og:description" 
-      content="SQL optimization specialist with 40% efficiency 
-               improvements. View my data analysis projects." />
-<meta property="og:type" content="website" />
-<meta property="og:url" 
-      content="https://yourusername.github.io/portfolio" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" 
-      content="MD Adnan Qamar | Data Analyst Portfolio" />
-```
+<div align="center">
+  Made with ❤️ and Python · React · Gemini vibes 🚀
+</div>
